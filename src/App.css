@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+  font-family: sans-serif;
+}
+.details-manager {
+  display: flex;
+  margin: 1rem;
+}
+.control-items {
+  margin: 1rem;
+}
