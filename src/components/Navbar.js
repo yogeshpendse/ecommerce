@@ -1,13 +1,16 @@
 import { NavLink } from "react-router-dom";
-import { useCart } from "../context-used/cart-context";
-
+import { useCartcontext } from "../contexts/cart-context";
+import { useWishlistcontext } from "../contexts/wishlist-context";
 export function Navbar() {
-  const { state } = useCart();
+  const { wishliststate } = useWishlistcontext();
+  const { cartstate } = useCartcontext();
+  // wishliststate.datainwishlist
+  console.log({ navsup: cartstate.dataincart.length });
   return (
     <div>
       <header>
         <nav className="navbar-main">
-          <h1 className="navbar-main-header">e-commerce</h1>
+          <h1 className="navbar-main-header">pizza+</h1>
           <ul className="navbar-main-ul">
             <li className="navbar-main-links">
               <NavLink
@@ -23,40 +26,37 @@ export function Navbar() {
               <NavLink
                 className="navbar-main-ul-ua"
                 activeClassName="navbar-main-ul-a"
+                to="/products"
+              >
+                products
+              </NavLink>
+            </li>
+            <li className="navbar-main-links">
+              <NavLink
+                className="navbar-main-ul-ua"
+                activeClassName="navbar-main-ul-a"
+                to="/wishlist"
+              >
+                wishlist <sup>{wishliststate.datainwishlist.length}</sup>
+              </NavLink>
+            </li>
+
+            <li className="navbar-main-links">
+              <NavLink
+                className="navbar-main-ul-ua"
+                activeClassName="navbar-main-ul-a"
                 to="/cart"
               >
-                cart
-                <sup>
-                  <span
-                    style={
-                      state.prodsincart.length !== 0
-                        ? null
-                        : { display: "none" }
-                    }
-                  >
-                    <span className="red-badge-circle">
-                      {state.prodsincart.length}
-                    </span>
-                  </span>
-                </sup>
+                cart <sup>{cartstate.dataincart.length}</sup>
               </NavLink>
             </li>
             <li className="navbar-main-links">
               <NavLink
                 className="navbar-main-ul-ua"
                 activeClassName="navbar-main-ul-a"
-                to="/whishlist"
+                to="/login"
               >
-                whishlist
-              </NavLink>
-            </li>
-            <li className="navbar-main-links">
-              <NavLink
-                className="navbar-main-ul-ua"
-                activeClassName="navbar-main-ul-a"
-                to="/acc"
-              >
-                Account
+                account
               </NavLink>
             </li>
           </ul>

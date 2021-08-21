@@ -1,19 +1,17 @@
-import { useParams } from "react-router-dom";
-import { Dispthisprod } from "../components/Dispthisprod";
-import { Navbar } from "../components/Navbar";
-import { useCart } from "../context-used/cart-context";
-import { bringproductdata } from "../functions/bringproductdata";
-export function Productviewpage() {
-  const { data } = useCart();
-  const { pid } = useParams();
-  const reult = bringproductdata(pid, data);
+import { useState } from "react";
+import { Prodtoggle } from "../components/prodtoggle";
+import { Productdata } from "../components/productdata";
+
+export function Productpage() {
+  const [productsstate, setProductsstate] = useState(true);
   return (
     <>
-      <div>
-        <Navbar />
-        <Dispthisprod product={reult} />
-      </div>
+      <h1>This is product page.</h1>
+      <Prodtoggle />
+      <Productdata
+        setProductsstate={setProductsstate}
+        productsstate={productsstate}
+      />
     </>
   );
 }
-// Productpage.js

@@ -1,9 +1,31 @@
-import "./styles.css";
-import { Reactrouter } from "./routes/Routing-app";
-export default function App() {
+import "./App.css";
+import { Productpage } from "./pages/productpage";
+import { Routes, Route } from "react-router-dom";
+import { Cartpage } from "./pages/cartpage";
+import { Wishlistpage } from "./pages/wishlist";
+import { Loginpage } from "./pages/loginpage";
+import { Homepage } from "./pages/hompage";
+import { Pagenotfound } from "./pages/pagenotfound";
+import { Privateroute } from "./privateroutes/private-route";
+import { Navbar } from "./components/navbar";
+import { Signuppage } from "./pages/signuppage";
+import { Productdisppage } from "./pages/productdisppage";
+function App() {
   return (
     <div className="App">
-      <Reactrouter />
+      <Navbar />
+      <Routes>
+        <Route end path="/" element={<Homepage />} />
+        <Route end path="/products" element={<Productpage />} />
+        <Route end path="product/:prid" element={<Productdisppage />} />
+        <Privateroute end path="/cart" element={<Cartpage />} />
+        <Privateroute end path="/wishlist" element={<Wishlistpage />} />
+        <Route end path="/login" element={<Loginpage />} />
+        <Route end path="/signup" element={<Signuppage />} />
+        <Route end path="*" element={<Pagenotfound />} />
+      </Routes>
     </div>
   );
 }
+
+export default App;
