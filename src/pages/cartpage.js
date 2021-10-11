@@ -199,116 +199,71 @@ export function Cartpage() {
     }
   }
   return (
-    <div>
+    <div className="mt-5rem">
       <h1>This is Cart page</h1>
       {loader ? (
         <h1>Loding...</h1>
       ) : (
-        <div className="product-cardcontainer">
+        <div className="container">
           {state.map((items) => {
             return (
-              <div key={items.prid}>
-                <div className="product-card">
-                  <div className="product-badge">Hot</div>
-                  <div className="product-tumb">
-                    <img src={items.image} alt={items.name} />
-                  </div>
-                  <div className="product-details">
-                    <span className="product-catagory">{items.foodtype}</span>
-                    <h3>{items.name}</h3>
+              <div class="product-card" key={items.prid}>
+                <div class="product-top">
+                  <img
+                    class="product-image"
+                    src={items.image}
+                    alt={items.name}
+                  />
+                  <button
+                    class="border-black btn-circle like cursor-pointer"
+                    onClick={() => addtowhishlist(items)}
+                  >
+                    <i class="bi bi-heart-fill"></i>
+                  </button>
+                </div>
+                <div class="product-bottom">
+                  <div class="product-description">
                     <p>
-                      <span style={{ color: "black" }}>
-                        {/* Stock status :&nbsp;
-                      {items.inStock ? "available" : "not available"} <br />
-                      fast delivery status - &nbsp;
-                      {items.fastDelivery ? "available" : "not available"} */}
-                      </span>
+                      <strong>{items.name}</strong>
                     </p>
-                    <div className="product-bottom-details">
-                      <div className="product-price">₹{items.price}</div>
-                      <div className="product-links">
-                        <button
-                          onClick={() => {
-                            addtowhishlist(items);
-                            // dispatch({
-                            //   type: "ADD_TO_WHISHLIST",
-                            //   payload: items,
-                            // })
-                          }}
-                          className="product-whishlist-heart"
-                        >
-                          <span style={{ fontSize: "2rem" }}> &#9829; </span>
-                        </button>
-                        <button
-                          // usydf removefromcart
-                          onClick={() => removefromcart(items)}
-                          style={{ fontSize: "2rem" }}
-                        >
-                          &#128465;
-                        </button>
-                      </div>
-                      <div style={{ fontSize: "2rem" }}>
-                        <button
-                          onClick={() => {
-                            // dispatch({
-                            //   type: "DECREMENT_BY_ONE",
-                            //   payload: items,
-                            // })
-                            decrementbyone(items);
-                          }}
-                          style={{
-                            fontSize: "1rem",
-                            width: "2rem",
-                            height: "2rem",
-                            borderRadius: "50%",
-                            cursor: "pointer",
-                          }}
-                        >
-                          &lt;
-                        </button>
-                        &nbsp;
-                        {items.quantity}&nbsp;
-                        <button
-                          onClick={() => {
-                            // dispatch({
-                            //   type: "INCREMENT_BY_ONE",
-                            //   payload: items,
-                            // })
-                            incrementbyone(items);
-                          }}
-                          style={{
-                            fontSize: "1rem",
-                            width: "2rem",
-                            height: "2rem",
-                            borderRadius: "50%",
-                            cursor: "pointer",
-                          }}
-                        >
-                          &gt;
-                        </button>
-                      </div>
-                    </div>
+                  </div>
+                  <div class="product-price">&#8377;&nbsp;996</div>
+                  <div class="cart-counter">
+                    <button
+                      class="btn btn-primary cursor-pointer font-large"
+                      onClick={() => incrementbyone(items)}
+                    >
+                      <i class="bi bi-arrow-up-circle-fill"></i>
+                    </button>
+                    &nbsp;&nbsp;
+                    <p>{items.quantity}</p>
+                    &nbsp;&nbsp;
+                    {items.quantity > 1 && (
+                      <button
+                        class="btn btn-primary cursor-pointer font-large"
+                        onClick={() => decrementbyone(items)}
+                      >
+                        <i class="bi bi-arrow-down-circle-fill"></i>
+                      </button>
+                    )}
                   </div>
                 </div>
+                <button
+                  className="btn btn-danger cursor-pointer width-100per"
+                  style={{
+                    borderTopRightRadius: "0px",
+                    borderTopLeftRadius: "0px",
+                    fontSize: "large",
+                  }}
+                  onClick={() => removefromcart(items)}
+                >
+                  <i class="bi bi-x-circle-fill"></i>&nbsp;remove
+                </button>
               </div>
             );
           })}
         </div>
       )}
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-      />
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-      />
       <ToastContainer
         position="top-right"
         autoClose={3000}

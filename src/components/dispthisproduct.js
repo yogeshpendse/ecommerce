@@ -126,41 +126,68 @@ export function Dispthisproduct(params) {
       {loader ? (
         <h1 style={{ textAlign: "center" }}>loading...</h1>
       ) : (
-        <div className="thisproductpage">
-          <div className="thisproductimagecontainer">
-            <img className="thisproductimage" src={product.image} alt="" />
-          </div>
-          <div className="thisproductdescriptiondata">
-            <h1>{product.name} </h1>
-            <h2 className="thisproductcategory">{product.department}</h2>
-            <p className="thisproductdescription">{product.description}</p>
-            <div className="thisproductotherdata">
-              <p>{product.fastDelivery && "Fast Delivery"}</p>
-              <p>{product.inStock === false && "Out of stock"}</p>
-              <button onClick={() => handlecartbutton(product)}>
+        <div className="product-page">
+          <div className="product-page-container">
+            <div className="product-page-image">
+              <img
+                src="https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/veg-kebab-surprise.4da5da709a70f245506a9441a0569b29.1.jpg?width=300"
+                alt="imagename"
+              />
+            </div>
+            <div className="product-page-name">
+              <p>{product.name}</p>
+              <p>&#8377;&nbsp;{product.price}</p>
+            </div>
+            <div className="product-page-tags">
+              <p className="product-page-tag-star">
+                <strong>
+                  {product.stars}&nbsp;<i className="bi bi-star-fill"></i>
+                </strong>
+              </p>
+              {product.timed && (
+                <p className="product-page-tag-delivery">
+                  <strong>fast</strong>
+                </p>
+              )}
+
+              <p
+                className={
+                  product.foodtype === "vegetarian"
+                    ? "product-page-tag-veg"
+                    : "product-page-tag-nonveg"
+                }
+              >
+                <strong>
+                  {product.foodtype === "vegetarian" ? "veg" : "non-veg"}
+                </strong>
+              </p>
+              {product.newdish && (
+                <p className="product-page-tag-newdish">
+                  <strong>new-dish</strong>
+                </p>
+              )}
+            </div>
+            <div className="product-page-controllers">
+              <button
+                onClick={() => handlecartbutton(product)}
+                className="btn btn-primary product-page-btn cursor-pointer"
+              >
                 add to cart
               </button>
-              <button onClick={() => handlewishlistbutton(product)}>
-                add to whishlist
+              <button
+                onClick={() => handlewishlistbutton(product)}
+                className="btn btn-primary product-page-btn cursor-pointer"
+              >
+                add to wishlist
               </button>
+            </div>
+            <div className="product-page-description">
+              <strong>description : </strong>
+              {product.description}
             </div>
           </div>
         </div>
       )}
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-      />
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-      />
       <ToastContainer
         position="top-right"
         autoClose={3000}

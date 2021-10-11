@@ -4,6 +4,7 @@ import axios from "axios";
 import { useWishlistcontext } from "../contexts/wishlist-context";
 import { useCartcontext } from "../contexts/cart-context";
 import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 export function Wishlistpage() {
@@ -158,77 +159,56 @@ export function Wishlistpage() {
   // item
   console.log({ cartstate });
   return (
-    <div>
+    <div className="mt-5rem">
       <h1>This is Wishlist page</h1>
-      <div className="product-cardcontainer">
+      <div className="container">
         {wishliststatearray.map((item) => {
           return (
-            <div key={item.prid}>
-              <div className="product-card">
-                <div className="product-badge">Hot</div>
-                <div className="product-tumb">
-                  <img src={item.image} alt={item.name} />
-                </div>
-                <div className="product-details">
-                  <span className="product-catagory">{item.foodtype}</span>
-                  <span className="product-header">
-                    {/* <Link to={`/productviewpage/${item.id}`}> */}
-                    <h2>{item.name}</h2>
-                  </span>
-                  <p>{item.description.substring(0, 40)}...</p>
-                  <div className="product-bottom-details">
-                    <div className="product-price">&#8377;{item.price}</div>
-                    <div className="product-links">
-                      <button
-                        onClick={() => {
-                          // REMOVE_FROM_WHISHLIST
-                          removefromwishlist(item);
-                          // console.log({ message: "REMOVE_FROM_WHISHLIST" });
-                          // dispatch({
-                          //   type: "REMOVE_FROM_WHISHLIST",
-                          //   payload: items,
-                          // })
-                        }}
-                        className="product-whishlist-heart"
-                      >
-                        <span style={{ fontSize: "2rem" }}>&#215;</span>
-                      </button>
-                      <button
-                        // WHISHLIST_TO_CART
-                        onClick={() => {
-                          wishlisttocart(item);
-
-                          // dispatch({
-                          //   type: "WHISHLIST_TO_CART",
-                          //   payload: items,
-                          // });
-                        }}
-                        className="product-whishlist-cart"
-                      >
-                        <span style={{ fontSize: "2rem" }}>+</span>
-                      </button>
-                    </div>
+            <div className="product-card" key={item.prid}>
+              <div className="product-top">
+                <img className="product-image" src={item.image} alt="pizza" />
+              </div>
+              <div className="product-bottom">
+                <Link
+                  className="text-decoration-none"
+                  to={`/product/${item.prid}`}
+                >
+                  <div className="product-description">
+                    <strong>{item.name}</strong>
+                    <p>{item.description}</p>
                   </div>
+                </Link>
+              </div>
+              <div className="width-100per">
+                <div className="product-price ml-0-5rem">
+                  &#8377;&nbsp;{item.price}
                 </div>
+                <button
+                  className="btn btn-primary cursor-pointer width-100per"
+                  style={{
+                    fontSize: "large",
+                    borderRadius: "0px",
+                  }}
+                  onClick={() => wishlisttocart(item)}
+                >
+                  add to cart
+                </button>
+                <button
+                  className="btn btn-danger cursor-pointer width-100per"
+                  style={{
+                    borderTopRightRadius: "0px",
+                    borderTopLeftRadius: "0px",
+                    fontSize: "large",
+                  }}
+                  onClick={() => removefromwishlist(item)}
+                >
+                  remove
+                </button>
               </div>
             </div>
           );
         })}
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-      />
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-      />
       <ToastContainer
         position="top-right"
         autoClose={3000}

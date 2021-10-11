@@ -1,0 +1,92 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+:root {
+  --primary-color: #0d6efd;
+  --disabled-primary-color: #61a0fd;
+  --background-color: whitesmoke;
+  --secondary-color: black;
+  --primary-text-color: black;
+  --secondary-text-color: white;
+  --tertiary-color: #dadada;
+  --some-background: #dadadaad;
+  --gray-shade: #b8c2c4;
+}
+* {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+ul {
+  list-style-type: none;
+}
+.color-fixes {
+  background-color: var(--primary-color);
+  color: var(--secondary-text-color);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+.toggler {
+  height: 3rem;
+  width: 3rem;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 2rem;
+}
+.links {
+  font-size: 1.5rem;
+  text-align: left;
+}
+.links-item {
+  margin-top: 1.5rem;
+}
+.aligner {
+  color: var(--secondary-color);
+  background-color: var(--background-color);
+  margin-top: 5rem;
+}
+.float {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+.btn-black {
+  border: none;
+  text-align: center;
+  border-radius: 50%;
+  padding: 1.5rem;
+  height: 1.8rem;
+  width: 1.8rem;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.display-list {
+  display: flex;
+  gap: 1rem;
+  font-size: 1rem;
+  padding: 1rem;
+}
+.okpok {
+  height: 3rem;
+  width: 3rem;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 2rem;
+}
+.navbar-link {
+  text-decoration: none;
+  color: var(--secondary-text-color);
+  font-family: sans-serif;
+  font-size: large;
+}

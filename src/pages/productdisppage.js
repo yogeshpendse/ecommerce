@@ -23,8 +23,8 @@ export function Productdisppage() {
   }, [url]);
   console.log({ productstate, url });
   return (
-    <>
+    <div className="mt-5rem">
       <Dispthisproduct product={productstate} loader={loader} />
-    </>
+    </div>
   );
 }

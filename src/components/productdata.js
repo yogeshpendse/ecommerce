@@ -15,6 +15,7 @@ import {
 } from "../functions/productfunctions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "../cssforcomponents/products.css";
 export function Productdata(params) {
   const { productsstate, setProductsstate } = params;
   const { token, cartdispatch } = useCartcontext();
@@ -188,74 +189,75 @@ export function Productdata(params) {
       {productsstate ? (
         <h1 style={{ textAlign: "center" }}>Loading...</h1>
       ) : (
-        <div className="product-cardcontainer">
+        <div className="container">
           {arraysix.map((item) => {
             return (
               <div className="product-card" key={item.prid}>
-                <div className="product-badge">Hot</div>
-                <div className="product-tumb">
-                  <img src={item.image} alt={item.name} />
-                </div>
-                <div className="product-details">
-                  <span className="product-catagory">{item.foodtype}</span>
-                  <span className="product-header">
-                    <Link to={`/product/${item.prid}`}>
-                      <h3>{item.name}</h3>
-                    </Link>
-                  </span>
-                  <p>{item.description}...</p>
-                  <p>{item.timed && "Fast Delivery"}</p>
-                  <p>{item.newdish ? "New Dish" : "Old Dish"}</p>
-                  <p>{item.stars}</p>
-                  <div className="product-bottom-details">
-                    <div className="product-price">
-                      {/* <small className="unhilighted-color">
-                      &#8377;{item.price * item.randommultiplier}
-                    </small> */}
-                      <span style={{ color: "green" }}>
-                        &#8377;{item.price} &nbsp;
+                <div className="product-top">
+                  <img className="product-image" src={item.image} alt="pizza" />
+                  <button
+                    onClick={() => handlewishlistbutton(item)}
+                    className="border-black btn-circle like cursor-pointer"
+                  >
+                    <i className="bi bi-heart-fill"></i>
+                  </button>
+                  <div className="spec-tags">
+                    {item.timed && (
+                      <span className="spec-tag-delivery">
+                        <i className="bi bi-lightning-fill"></i>
                       </span>
-                      {/* <span style={{ fontSize: "medium" }}>
-                      {Math.round(100 / item.randommultiplier)}% discount
-                    </span> */}
-                    </div>
-                    <div className="product-links">
-                      <button
-                        // handlewishlistbutton(item)
-                        onClick={() => handlewishlistbutton(item)}
-                        className="product-whishlist-heart"
-                      >
-                        <span style={{ fontSize: "2rem" }}> &#9829; </span>
-                      </button>
-                      <button
-                        // handlecartbutton(item)
-                        onClick={() => handlecartbutton(item)}
-                        className="product-whishlist-cart"
-                      >
-                        <span style={{ fontSize: "2rem" }}>+</span>
-                      </button>
-                    </div>
+                    )}
+                    {item.foodtype === "vegetarian" ? (
+                      <span className="spec-tag-veg">
+                        <i className="bi bi-patch-minus-fill"></i>
+                      </span>
+                    ) : (
+                      <span className="spec-tag-non-veg">
+                        <i className="bi bi-patch-minus-fill"></i>
+                      </span>
+                    )}
                   </div>
+                </div>
+                <div className="product-bottom">
+                  <Link
+                    className="text-decoration-none"
+                    to={`/product/${item.prid}`}
+                  >
+                    <div className="product-description">
+                      <strong>{item.name}</strong>
+                      <p>{item.description}</p>
+                    </div>
+                  </Link>
+
+                  {/* <div className="product-price">&#8377;&nbsp;{item.price}</div>
+                  <button
+                    onClick={() => handlecartbutton(item)}
+                    className="btn btn-primary cursor-pointer"
+                  >
+                    add to cart
+                  </button> */}
+                </div>
+                <div className="width-100per">
+                  <div className="product-price ml-0-5rem">
+                    &#8377;&nbsp;{item.price}
+                  </div>
+                  <button
+                    onClick={() => handlecartbutton(item)}
+                    className="btn btn-primary cursor-pointer width-100per"
+                    style={{
+                      borderTopRightRadius: "0px",
+                      borderTopLeftRadius: "0px",
+                      fontSize: "large",
+                    }}
+                  >
+                    add to cart
+                  </button>
                 </div>
               </div>
             );
           })}
         </div>
       )}
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-      />
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-      />
       <ToastContainer
         position="top-right"
         autoClose={3000}

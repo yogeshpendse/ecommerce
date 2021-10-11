@@ -2,7 +2,7 @@ import { Login } from "../components/login";
 
 export function Loginpage() {
   return (
-    <div>
+    <div className="mt-5rem">
       <Login />
     </div>
   );
