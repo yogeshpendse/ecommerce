@@ -75,9 +75,9 @@ export function Prodtoggle() {
                 <label>sort : </label>
                 <select onChange={(e) => togglesort(e.target.value)}>
                   <option value="NONE">none</option>
-                  <option value="PRICE_HIGH_TO_LOW">price high to low</option>
-                  <option value="PRICE_LOW_TO_HIGH">price low to high</option>
-                  <option value="STARS_HIGH_TO_LOW">stars high to low</option>
+                  <option value="PRICE_HIGH_TO_LOW">&#8377; high to low</option>
+                  <option value="PRICE_LOW_TO_HIGH">&#8377; low to high</option>
+                  <option value="STARS_HIGH_TO_LOW">&#9733; high to low</option>
                 </select>
               </div>
               <div className="modal-control-items">
