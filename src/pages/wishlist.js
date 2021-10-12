@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/auth-context";
 import axios from "axios";
 import { useWishlistcontext } from "../contexts/wishlist-context";
@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 export function Wishlistpage() {
   // const [state, setState] = useState([]);
   const { token, myauthAxios } = useAuth();
+  const [loader, setLoader] = useState(true);
   const { wishliststate, wishlistdispatch } = useWishlistcontext();
   const { cartstate, cartdispatch } = useCartcontext();
   const wishliststatearray = [...wishliststate.datainwishlist];
@@ -20,6 +21,7 @@ export function Wishlistpage() {
 
     const fetchData = async () => {
       try {
+        setLoader(true);
         console.log({ wishlisttoken: token });
         const response = await axios.get(
           "https://ecom-server--bleedblue.repl.co/wishlist/getwhishlistdata",
@@ -33,10 +35,11 @@ export function Wishlistpage() {
           type: "SET_DATA_TO_WISHLIST_ARRAY",
           payload: response.data.data.productsinwishlist,
         });
+        setLoader(false);
         // ...
       } catch (error) {
         if (axios.isCancel(error)) {
-          //cancelled
+          setLoader(false);
           console.log("axios cancel : ", JSON.stringify(axios.isCancel(error)));
         } else {
           // throw error;
@@ -160,55 +163,71 @@ export function Wishlistpage() {
   console.log({ cartstate });
   return (
     <div className="mt-5rem">
-      <h1>This is Wishlist page</h1>
-      <div className="container">
-        {wishliststatearray.map((item) => {
-          return (
-            <div className="product-card" key={item.prid}>
-              <div className="product-top">
-                <img className="product-image" src={item.image} alt="pizza" />
-              </div>
-              <div className="product-bottom">
-                <Link
-                  className="text-decoration-none"
-                  to={`/product/${item.prid}`}
-                >
-                  <div className="product-description">
-                    <strong>{item.name}</strong>
-                    <p>{item.description}</p>
+      {loader ? (
+        <h1 style={{ marginTop: "5rem", textAlign: "center" }}>Loding...</h1>
+      ) : (
+        <>
+          {wishliststatearray.length === 0 && (
+            <h1 style={{ marginTop: "5rem", textAlign: "center" }}>
+              wishlist is empty
+            </h1>
+          )}
+          {wishliststatearray.length > 0 && (
+            <div className="container">
+              {wishliststatearray.map((item) => {
+                return (
+                  <div className="product-card" key={item.prid}>
+                    <div className="product-top">
+                      <img
+                        className="product-image"
+                        src={item.image}
+                        alt="pizza"
+                      />
+                    </div>
+                    <div className="product-bottom">
+                      <Link
+                        className="text-decoration-none"
+                        to={`/product/${item.prid}`}
+                      >
+                        <div className="product-description">
+                          <strong>{item.name}</strong>
+                          <p>{item.description}</p>
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="width-100per">
+                      <div className="product-price ml-0-5rem">
+                        &#8377;&nbsp;{item.price}
+                      </div>
+                      <button
+                        className="btn btn-primary cursor-pointer width-100per"
+                        style={{
+                          fontSize: "large",
+                          borderRadius: "0px",
+                        }}
+                        onClick={() => wishlisttocart(item)}
+                      >
+                        add to cart
+                      </button>
+                      <button
+                        className="btn btn-danger cursor-pointer width-100per"
+                        style={{
+                          borderTopRightRadius: "0px",
+                          borderTopLeftRadius: "0px",
+                          fontSize: "large",
+                        }}
+                        onClick={() => removefromwishlist(item)}
+                      >
+                        remove
+                      </button>
+                    </div>
                   </div>
-                </Link>
-              </div>
-              <div className="width-100per">
-                <div className="product-price ml-0-5rem">
-                  &#8377;&nbsp;{item.price}
-                </div>
-                <button
-                  className="btn btn-primary cursor-pointer width-100per"
-                  style={{
-                    fontSize: "large",
-                    borderRadius: "0px",
-                  }}
-                  onClick={() => wishlisttocart(item)}
-                >
-                  add to cart
-                </button>
-                <button
-                  className="btn btn-danger cursor-pointer width-100per"
-                  style={{
-                    borderTopRightRadius: "0px",
-                    borderTopLeftRadius: "0px",
-                    fontSize: "large",
-                  }}
-                  onClick={() => removefromwishlist(item)}
-                >
-                  remove
-                </button>
-              </div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
+          )}
+        </>
+      )}
       <ToastContainer
         position="top-right"
         autoClose={3000}
