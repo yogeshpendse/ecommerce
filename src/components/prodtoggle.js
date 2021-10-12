@@ -48,7 +48,7 @@ export function Prodtoggle() {
           <div className="modal">
             <div className="modal-content">
               <div className="modal-control-items">
-                <label>food type : </label>
+                <label>food : </label>
                 <select onChange={(e) => togglefoodtype(e.target.value)}>
                   <option value="both">both</option>
                   <option value="vegetarian">vegetarian</option>
@@ -56,7 +56,7 @@ export function Prodtoggle() {
                 </select>
               </div>
               <div className="modal-control-items">
-                <label>delivery type : </label>
+                <label>delivery : </label>
                 <select onChange={(e) => toggledeliverytype(e.target.value)}>
                   <option value="both">both</option>
                   <option value="TIMED">timed</option>
@@ -64,7 +64,7 @@ export function Prodtoggle() {
                 </select>
               </div>
               <div className="modal-control-items">
-                <label>new dish : </label>
+                <label>new : </label>
                 <select onChange={(e) => togglenewdish(e.target.value)}>
                   <option value="both">both</option>
                   <option value="NEW_DISH">new dish</option>
@@ -81,7 +81,7 @@ export function Prodtoggle() {
                 </select>
               </div>
               <div className="modal-control-items">
-                <label>dish type : </label>
+                <label>type : </label>
                 <select onChange={(e) => toggledishtype(e.target.value)}>
                   <option value="all">all</option>
                   <option value="pizza">pizza</option>
