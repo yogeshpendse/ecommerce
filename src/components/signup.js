@@ -1,8 +1,11 @@
 import { useForm } from "../contexts/form-context";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useEffect } from "react";
-import { Statusjs } from "./status";
+// import { Statusjs } from "./status";
 import { Username } from "./username";
+import { Link } from "react-router-dom";
 export function Signup(params) {
   const {
     formstate,
@@ -36,24 +39,40 @@ export function Signup(params) {
         name,
         mobileno: number,
       });
+      toast.success("user created", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       console.log(postrequest);
     } catch (error) {
-      // console.log({
-      //   success: false,
-      //   errormessage: error.response.data.message,
-      //   error,
-      // });
-      console.log({ errorresponse: error.response.status });
       if (
         error.response.data.message === "mobileno already taken" &&
         error.response.status === 400
       ) {
-        console.log({
-          message: "if wala",
-          error: error.response.data.message,
+        toast.error(error.response.data.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         });
       } else {
-        console.log({ message: "else wala", error });
+        toast.error("some error occured", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     }
   }
@@ -110,54 +129,81 @@ export function Signup(params) {
     };
   }, [dependance, setStatus]);
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    postreques(formdata);
+  };
   return (
     <>
-      <div className="opopo">
-        <div className="align-form-elements">
-          <input
-            placeholder="name"
-            onChange={(e) => handlechangeforname(e.target.value)}
-          />
-          &nbsp;
-          <Statusjs checker={formstate.name} />
-        </div>
+      <form onSubmit={onSubmit}>
+        <div className="input-form">
+          <div className="input-elements">
+            <input
+              className="input-element"
+              placeholder="name"
+              onChange={(e) => handlechangeforname(e.target.value)}
+            />
 
-        <div className="align-form-elements">
-          <input
-            placeholder="username"
-            onChange={(e) => handlechangeforusername(e.target.value)}
-          />
-          &nbsp;
-          <Statusjs checker={formstate.username} />
-          {dependance.length > 0 ? <Username status={status} /> : null}
-        </div>
+            {/* <Statusjs checker={formstate.name} /> */}
+            <input
+              className="input-element"
+              placeholder="username"
+              onChange={(e) => handlechangeforusername(e.target.value)}
+            />
 
-        <div className="align-form-elements">
-          <input
-            type="password"
-            placeholder="password"
-            onChange={(e) => handlechangeforpassword(e.target.value)}
-          />
-          &nbsp;
-          <Statusjs checker={formstate.password} />
-        </div>
+            {/* <Statusjs checker={formstate.username} /> */}
+            {dependance.length > 0 ? <Username status={status} /> : <></>}
+            <input
+              className="input-element"
+              type="password"
+              placeholder="password"
+              onChange={(e) => handlechangeforpassword(e.target.value)}
+            />
 
-        <div className="align-form-elements">
-          <input
-            type="number"
-            placeholder="number"
-            onChange={(e) => handlechangefornumber(e.target.value)}
-          />
-          &nbsp;
-          <Statusjs checker={formstate.number} />
+            {/* <Statusjs checker={formstate.password} /> */}
+            <input
+              className="input-element"
+              type="number"
+              placeholder="number"
+              onChange={(e) => handlechangefornumber(e.target.value)}
+            />
+
+            {/* <Statusjs checker={formstate.number} /> */}
+            <button
+              // className="input-element btn btn-primary cursor-pointer"
+              className={
+                !buttondisability
+                  ? "input-form-submit-disabled"
+                  : "input-element btn-primary cursor-pointer"
+              }
+              // onClick={() => postreques(formdata)}
+              type="submit"
+              disabled={!buttondisability}
+            >
+              submit
+            </button>
+            <Link to="/login" className="input-toggle-button text-align-center">
+              <p className="text-decoration-underline">Already a customer?</p>
+            </Link>
+            <div
+              style={{
+                backgroundColor: "#008080",
+                color: "#fff",
+                padding: "0.5rem 1rem",
+                fontStyle: "italic",
+              }}
+            >
+              <p className="text-align-center">
+                <>
+                  <span># password must be alphanumeric.</span>
+                  <br />
+                  <span># username must contain only small letters.</span>
+                </>
+              </p>
+            </div>
+          </div>
         </div>
-        <button
-          onClick={() => postreques(formdata)}
-          disabled={!buttondisability}
-        >
-          submit
-        </button>
-      </div>
+      </form>
     </>
   );
 }

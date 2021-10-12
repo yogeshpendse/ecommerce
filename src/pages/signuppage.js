@@ -1,8 +1,17 @@
 import { Signup } from "../components/signup";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export function Signuppage(params) {
   return (
-    <div className="mt-5rem">
+    <>
       <Signup />
-    </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+      />
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -7,6 +7,7 @@ export function Login() {
   const { state } = useLocation();
   const [usernameval, setUsernameval] = useState("");
   const [passwordval, setPassword] = useState("");
+  const disablestatus = usernameval.length > 0 && passwordval.length;
 
   const navigate = useNavigate();
   const { setIsuserloggedin, setToken, isuserloggedin } = useAuth();
@@ -54,23 +55,67 @@ export function Login() {
     setToken(null);
     window.location.reload();
   };
+  const onSubmit = (event) => {
+    event.preventDefault();
+    checklogin();
+  };
   return (
     <>
       {isuserloggedin === false ? (
-        <div>
-          <input
-            placeholder="username"
-            onChange={(e) => handleusername(e.target.value)}
-          />
-          <input
-            placeholder="password"
-            onChange={(e) => handlepassword(e.target.value)}
-          />
-          <button onClick={checklogin}>login</button>
-          <button onClick={() => navigate("/signup")}>register</button>
-        </div>
+        <form onSubmit={onSubmit}>
+          <div className="input-form">
+            <div className="input-elements">
+              <input
+                className="input-element"
+                placeholder="username"
+                onChange={(e) => handleusername(e.target.value)}
+              />
+              <input
+                className="input-element"
+                placeholder="password"
+                onChange={(e) => handlepassword(e.target.value)}
+              />
+              <button
+                type="submit"
+                className={
+                  disablestatus
+                    ? "input-element btn btn-primary cursor-pointer"
+                    : "input-form-submit-disabled"
+                }
+                disabled={!disablestatus}
+                // onClick={checklogin}
+              >
+                login
+              </button>
+              <Link
+                className="input-toggle-button text-align-center"
+                to="/signup"
+              >
+                <p className="text-decoration-underline">
+                  Don't have an account?
+                </p>
+              </Link>
+            </div>
+          </div>
+        </form>
       ) : (
-        <button onClick={logout}>logout</button>
+        <div
+          className="logout-btn"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "5rem",
+          }}
+        >
+          <button
+            style={{ padding: "0.5", fontSize: "1rem" }}
+            onClick={logout}
+            className="btn btn-primary cursor-pointer"
+          >
+            logout
+          </button>
+        </div>
       )}
     </>
   );
