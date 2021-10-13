@@ -101,7 +101,7 @@ export function Prodtoggle() {
         </div>
       )}
 
-      <hr />
+      <hr style={{ marginBottom: "2rem" }} />
     </>
   );
 }
