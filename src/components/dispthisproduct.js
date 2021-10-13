@@ -129,10 +129,7 @@ export function Dispthisproduct(params) {
         <div className="product-page">
           <div className="product-page-container">
             <div className="product-page-image">
-              <img
-                src="https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/veg-kebab-surprise.4da5da709a70f245506a9441a0569b29.1.jpg?width=300"
-                alt="imagename"
-              />
+              <img src={product.image} alt="imagename" />
             </div>
             <div className="product-page-name">
               <p>{product.name}</p>
