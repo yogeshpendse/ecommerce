@@ -370,3 +370,11 @@ li {
   text-decoration: none;
   color: var(--primary-text-color);
 }
+.input-search {
+  border: 1px solid black;
+  font-size: large;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 1rem;
+  outline: none;
+}

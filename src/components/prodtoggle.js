@@ -32,7 +32,12 @@ export function Prodtoggle() {
   return (
     <>
       <div className="flex justify-content-center">
-        <input type="search" onChange={(e) => searchbox(e.target.value)} />
+        <input
+          className="input-search text-align-center"
+          type="search"
+          placeholder="search products"
+          onChange={(e) => searchbox(e.target.value)}
+        />
       </div>
       <button
         className="modal-open cursor-pointer ml-0-5rem"
