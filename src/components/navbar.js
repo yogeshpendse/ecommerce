@@ -96,27 +96,27 @@ function Listval(state) {
   return (
     <>
       <ul className="links">
-        <li className="links-item">
+        <li className="links-item ml-0_5rem">
           <NavLink end className="navbar-link" to="/">
             Home
           </NavLink>
         </li>
-        <li className="links-item">
+        <li className="links-item ml-0_5rem">
           <NavLink className="navbar-link" to="/products">
             products
           </NavLink>
         </li>
-        <li className="links-item">
+        <li className="links-item ml-0_5rem">
           <NavLink className="navbar-link" to="/cart">
             cart <sup>{cartstate.dataincart.length}</sup>
           </NavLink>
         </li>
-        <li className="links-item">
+        <li className="links-item ml-0_5rem">
           <NavLink className="navbar-link" to="/wishlist">
             wishlist <sup>{wishliststate.datainwishlist.length}</sup>
           </NavLink>
         </li>
-        <li className="links-item">
+        <li className="links-item ml-0_5rem">
           <NavLink className="navbar-link" to="/login">
             account
           </NavLink>

@@ -44,59 +44,67 @@ export function Prodtoggle() {
       </button>
 
       {modalstatus && (
-        <div className="modal-box text-align-center">
-          <div className="modal">
-            <div className="modal-content">
-              <div className="modal-control-items">
-                <label>food : </label>
-                <select onChange={(e) => togglefoodtype(e.target.value)}>
-                  <option value="both">both</option>
-                  <option value="vegetarian">vegetarian</option>
-                  <option value="non-vegetarian">non-vegetarian</option>
-                </select>
+        <div className="modal-overlay">
+          <div className="modal-box text-align-center">
+            <div className="modal">
+              <div className="modal-content">
+                <div className="modal-control-items">
+                  <label>food : </label>
+                  <select onChange={(e) => togglefoodtype(e.target.value)}>
+                    <option value="both">both</option>
+                    <option value="vegetarian">vegetarian</option>
+                    <option value="non-vegetarian">non-vegetarian</option>
+                  </select>
+                </div>
+                <div className="modal-control-items">
+                  <label>delivery : </label>
+                  <select onChange={(e) => toggledeliverytype(e.target.value)}>
+                    <option value="both">both</option>
+                    <option value="TIMED">timed</option>
+                    <option value="NON_TIMED">non-timed</option>
+                  </select>
+                </div>
+                <div className="modal-control-items">
+                  <label>new : </label>
+                  <select onChange={(e) => togglenewdish(e.target.value)}>
+                    <option value="both">both</option>
+                    <option value="NEW_DISH">new dish</option>
+                    <option value="OTHERS">others</option>
+                  </select>
+                </div>
+                <div className="modal-control-items">
+                  <label>sort : </label>
+                  <select onChange={(e) => togglesort(e.target.value)}>
+                    <option value="NONE">none</option>
+                    <option value="PRICE_HIGH_TO_LOW">
+                      &#8377; high to low
+                    </option>
+                    <option value="PRICE_LOW_TO_HIGH">
+                      &#8377; low to high
+                    </option>
+                    <option value="STARS_HIGH_TO_LOW">
+                      &#9733; high to low
+                    </option>
+                  </select>
+                </div>
+                <div className="modal-control-items">
+                  <label>type : </label>
+                  <select onChange={(e) => toggledishtype(e.target.value)}>
+                    <option value="all">all</option>
+                    <option value="pizza">pizza</option>
+                    <option value="sides">sides</option>
+                    <option value="dessert">dessert</option>
+                    <option value="drinks">drinks</option>
+                  </select>
+                </div>
               </div>
-              <div className="modal-control-items">
-                <label>delivery : </label>
-                <select onChange={(e) => toggledeliverytype(e.target.value)}>
-                  <option value="both">both</option>
-                  <option value="TIMED">timed</option>
-                  <option value="NON_TIMED">non-timed</option>
-                </select>
-              </div>
-              <div className="modal-control-items">
-                <label>new : </label>
-                <select onChange={(e) => togglenewdish(e.target.value)}>
-                  <option value="both">both</option>
-                  <option value="NEW_DISH">new dish</option>
-                  <option value="OTHERS">others</option>
-                </select>
-              </div>
-              <div className="modal-control-items">
-                <label>sort : </label>
-                <select onChange={(e) => togglesort(e.target.value)}>
-                  <option value="NONE">none</option>
-                  <option value="PRICE_HIGH_TO_LOW">&#8377; high to low</option>
-                  <option value="PRICE_LOW_TO_HIGH">&#8377; low to high</option>
-                  <option value="STARS_HIGH_TO_LOW">&#9733; high to low</option>
-                </select>
-              </div>
-              <div className="modal-control-items">
-                <label>type : </label>
-                <select onChange={(e) => toggledishtype(e.target.value)}>
-                  <option value="all">all</option>
-                  <option value="pizza">pizza</option>
-                  <option value="sides">sides</option>
-                  <option value="dessert">dessert</option>
-                  <option value="drinks">drinks</option>
-                </select>
-              </div>
+              <button
+                onClick={() => setModalstatus(false)}
+                className="modal-close"
+              >
+                <span className="modal-close-text">close</span>
+              </button>
             </div>
-            <button
-              onClick={() => setModalstatus(false)}
-              className="modal-close"
-            >
-              <span className="modal-close-text">close</span>
-            </button>
           </div>
         </div>
       )}
