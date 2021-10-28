@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useCartcontext } from "../contexts/cart-context";
-import { useWishlistcontext } from "../contexts/wishlist-context";
 import { useWidth } from "../customhooks/useWidth";
 import "../cssforcomponents/navbarcss.css";
 export function Navbar() {
-  const { wishliststate } = useWishlistcontext();
   const { cartstate } = useCartcontext();
   const [state, setState] = useState(false);
   const hookval = useWidth();
@@ -27,7 +25,7 @@ export function Navbar() {
                     // activeClassName="navbar-main-ul-a"
                     to="/"
                   >
-                    Home
+                    home
                   </NavLink>
                 </span>
                 <span>
@@ -54,7 +52,7 @@ export function Navbar() {
                     // activeClassName="navbar-main-ul-a"
                     to="/wishlist"
                   >
-                    wishlist <sup>{wishliststate.datainwishlist.length}</sup>
+                    wishlist
                   </NavLink>
                 </span>
                 <span>
@@ -92,13 +90,12 @@ export function Navbar() {
 
 function Listval(state) {
   const { cartstate } = useCartcontext();
-  const { wishliststate } = useWishlistcontext();
   return (
     <>
       <ul className="links">
         <li className="links-item ml-0_5rem">
           <NavLink end className="navbar-link" to="/">
-            Home
+            home
           </NavLink>
         </li>
         <li className="links-item ml-0_5rem">
@@ -113,10 +110,10 @@ function Listval(state) {
         </li>
         <li className="links-item ml-0_5rem">
           <NavLink className="navbar-link" to="/wishlist">
-            wishlist <sup>{wishliststate.datainwishlist.length}</sup>
+            wishlist
           </NavLink>
         </li>
-        <li className="links-item ml-0_5rem">
+        <li className="links-item ml-0_5rem pb-0_5rem">
           <NavLink className="navbar-link" to="/login">
             account
           </NavLink>

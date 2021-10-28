@@ -26,6 +26,9 @@ ul {
 .ml-0_5rem {
   margin-left: 0.5rem;
 }
+.pb-0_5rem {
+  padding-bottom: 0.5rem;
+}
 .color-fixes {
   background-color: var(--primary-color);
   color: var(--secondary-text-color);
