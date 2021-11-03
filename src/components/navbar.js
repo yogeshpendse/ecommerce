@@ -19,49 +19,24 @@ export function Navbar() {
             {screensizetoggle ? (
               <div className="display-list">
                 <span>
-                  <NavLink
-                    end
-                    className="navbar-link"
-                    // activeClassName="navbar-main-ul-a"
-                    to="/"
-                  >
-                    home
+                  <NavLink className="navbar-link" to="/">
+                    Products
                   </NavLink>
                 </span>
                 <span>
-                  <NavLink
-                    className="navbar-link"
-                    // activeClassName="navbar-main-ul-a"
-                    to="/products"
-                  >
-                    products
+                  <NavLink className="navbar-link" to="/cart">
+                    Cart
+                    {/*  <sup>{cartstate.dataincart.length}</sup> */}
                   </NavLink>
                 </span>
                 <span>
-                  <NavLink
-                    className="navbar-link"
-                    // activeClassName="navbar-main-ul-a"
-                    to="/cart"
-                  >
-                    cart <sup>{cartstate.dataincart.length}</sup>
+                  <NavLink className="navbar-link" to="/wishlist">
+                    Wishlist
                   </NavLink>
                 </span>
                 <span>
-                  <NavLink
-                    className="navbar-link"
-                    // activeClassName="navbar-main-ul-a"
-                    to="/wishlist"
-                  >
-                    wishlist
-                  </NavLink>
-                </span>
-                <span>
-                  <NavLink
-                    className="navbar-link"
-                    // activeClassName="navbar-main-ul-a"
-                    to="/login"
-                  >
-                    account
+                  <NavLink className="navbar-link" to="/login">
+                    Account
                   </NavLink>
                 </span>
               </div>

@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import { Cartpage } from "./pages/cartpage";
 import { Wishlistpage } from "./pages/wishlist";
 import { Loginpage } from "./pages/loginpage";
-import { Homepage } from "./pages/hompage";
 import { Pagenotfound } from "./pages/pagenotfound";
 import { Privateroute } from "./privateroutes/private-route";
 import { Navbar } from "./components/navbar";
@@ -15,8 +14,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route end path="/" element={<Homepage />} />
-        <Route end path="/products" element={<Productpage />} />
+        <Route end path="/" element={<Productpage />} />
         <Route end path="product/:prid" element={<Productdisppage />} />
         <Privateroute end path="/cart" element={<Cartpage />} />
         <Privateroute end path="/wishlist" element={<Wishlistpage />} />

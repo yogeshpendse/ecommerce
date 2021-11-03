@@ -31,11 +31,29 @@ export function Dispthisproduct(params) {
         progress: undefined,
       });
     } catch (error) {
+      console.log({
+        error: error.response.data.errormessage,
+        status: error.response.status,
+      }); //jwt malformed // 500
+      //
       if (
         error.response.data.message === "product already present in cart" &&
         error.response.status === 400
       ) {
         toast.info("product already present in cart", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      } else if (
+        error.response.data.errormessage === "jwt malformed" &&
+        error.response.status === 500
+      ) {
+        toast.error("please login", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -99,6 +117,19 @@ export function Dispthisproduct(params) {
       ) {
         console.log("already present in wishlist");
         toast.info("already present in wishlist", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      } else if (
+        error.response.data.errormessage === "jwt malformed" &&
+        error.response.status === 500
+      ) {
+        toast.error("please login", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,

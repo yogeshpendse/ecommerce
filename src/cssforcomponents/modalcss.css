@@ -24,13 +24,18 @@
   background: white;
   z-index: 10;
 }
+.modal-title {
+  font-size: x-large;
+  font-family: sans-serif;
+  font-weight: bold;
+}
 .modal {
-  border: 1px solid black;
+  border: 1px solid transparent;
   position: relative;
 }
 .modal-content {
   margin-bottom: 4rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
   overflow-y: scroll;
   max-height: 30vh;
   display: flex;
@@ -87,7 +92,7 @@
 @media (min-width: 600px) {
   .modal-content {
     margin-bottom: 4rem;
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
     max-height: 30vh;
     display: flex;
     flex-direction: column;
@@ -95,5 +100,17 @@
     font-family: sans-serif;
     font-weight: bold;
     padding: 0 1rem;
+  }
+}
+@media (max-width: 599px) {
+  .modal-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    transform: translate(-50%, -50%);
+    padding: inherit 1rem;
+    background: white;
+    z-index: 10;
   }
 }

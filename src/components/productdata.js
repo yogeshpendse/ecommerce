@@ -104,6 +104,19 @@ export function Productdata(params) {
           draggable: true,
           progress: undefined,
         });
+      } else if (
+        error.response.data.errormessage === "jwt malformed" &&
+        error.response.status === 500
+      ) {
+        toast.error("please login", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       } else {
         toast.error("some error occured", {
           position: "top-right",
@@ -155,6 +168,10 @@ export function Productdata(params) {
         console.log({ message: "already exist" });
       }
     } catch (error) {
+      console.log({
+        error: error.response.data.errormessage,
+        status: error.response.status,
+      }); //jwt malformed
       console.log({ success: false, errormessage: error.message });
       if (
         error.response.data.message === "already present in array" &&
@@ -162,6 +179,19 @@ export function Productdata(params) {
       ) {
         console.log("already present in wishlist");
         toast.info("already present in wishlist", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      } else if (
+        error.response.data.errormessage === "jwt malformed" &&
+        error.response.status === 500
+      ) {
+        toast.error("please login", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,

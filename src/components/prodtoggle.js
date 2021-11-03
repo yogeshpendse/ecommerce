@@ -52,6 +52,7 @@ export function Prodtoggle() {
         <div className="modal-overlay">
           <div className="modal-box text-align-center">
             <div className="modal">
+              <span className="modal-title">Filters</span>
               <div className="modal-content">
                 <div className="modal-control-items">
                   <label>food : </label>
