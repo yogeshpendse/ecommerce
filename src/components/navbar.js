@@ -64,33 +64,29 @@ export function Navbar() {
 }
 
 function Listval(state) {
-  const { cartstate } = useCartcontext();
+  // const { cartstate } = useCartcontext();
   return (
     <>
       <ul className="links">
         <li className="links-item ml-0_5rem">
-          <NavLink end className="navbar-link" to="/">
-            home
-          </NavLink>
-        </li>
-        <li className="links-item ml-0_5rem">
-          <NavLink className="navbar-link" to="/products">
-            products
+          <NavLink className="navbar-link" to="/">
+            Products
           </NavLink>
         </li>
         <li className="links-item ml-0_5rem">
           <NavLink className="navbar-link" to="/cart">
-            cart <sup>{cartstate.dataincart.length}</sup>
+            Cart
+            {/* Cart <sup>{cartstate.dataincart.length}</sup> */}
           </NavLink>
         </li>
         <li className="links-item ml-0_5rem">
           <NavLink className="navbar-link" to="/wishlist">
-            wishlist
+            Wishlist
           </NavLink>
         </li>
         <li className="links-item ml-0_5rem pb-0_5rem">
           <NavLink className="navbar-link" to="/login">
-            account
+            Account
           </NavLink>
         </li>
       </ul>
