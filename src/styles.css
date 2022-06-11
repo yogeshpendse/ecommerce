@@ -1,0 +1,219 @@
+@import url("https://bluecss.netlify.app/style.css");
+:root {
+  font-size: 62.5%;
+  font-family: sans-serif;
+  --primary: #0d6efd;
+  --secondary: #6ea8fe;
+  --tertiary: #084298;
+  --success: #52c41a;
+  --danger: #ff4d4f;
+  --warning: #faad14;
+  --info: #1890ff;
+  --light-text: white;
+}
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+.ecard__counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+.ecard__counterup {
+  font-size: 2rem;
+  padding: 0.5rem;
+  background-color: var(--primary);
+  color: var(--light-text);
+  font-weight: 700;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+}
+.ecard__countervalue {
+  font-size: 2.4rem;
+}
+.ecard__counterdown {
+  font-size: 2rem;
+  padding: 0.5rem;
+  background-color: var(--primary);
+  color: var(--light-text);
+  font-weight: 700;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+}
+.ecard__counterdown--disabled {
+  cursor: not-allowed;
+  background-color: gray;
+}
+.ecard__remove {
+  background-color: var(--danger);
+  margin-top: 1rem;
+}
+.home-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem;
+}
+.wishlist-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem;
+  gap: 1rem;
+}
+.cart-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem;
+}
+@media screen and (min-width: 360px) {
+  .cart-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    gap: 1rem;
+  }
+  .home-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    gap: 1rem;
+  }
+  .wishlist-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    gap: 1rem;
+  }
+}
+@media screen and (min-width: 480px) {
+  .cart-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .home-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .wishlist-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 768px) {
+  .cart-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .home-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .wishlist-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.page-width {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+.lift-navbar {
+  z-index: 5;
+}
+@media screen and (min-width: 768px) {
+  .scale_1_5:hover {
+    transition: all 0.3s;
+    transform: scale(1.1);
+  }
+}
+.filter__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.controlcomponent {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+.control-input {
+  margin-bottom: 1rem;
+}
+.ecard__tags {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.star {
+  color: gold;
+}
+.orange {
+  color: orangered;
+}
+.myloader {
+  width: 4rem;
+  height: 4rem;
+  border: 0.5rem solid var(--primary);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.myloader-sm {
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 0.3rem solid var(--light-text);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.modal__playlists {
+  cursor: pointer;
+}
+.homepagelayout {
+  margin-bottom: 3rem;
+}
+.mt-loader {
+  margin-top: 3rem;
+}
+.productlayout__buttons {
+  margin-top: 1.2rem;
+}

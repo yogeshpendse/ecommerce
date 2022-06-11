@@ -1,0 +1,40 @@
+:root {
+  font-size: 62.5%;
+  font-family: sans-serif;
+  --primary: #0d6efd;
+  --secondary: #6ea8fe;
+  --tertiary: #084298;
+  --success: #52c41a;
+  --danger: #ff4d4f;
+  --warning: #faad14;
+  --info: #1890ff;
+  --light-text: white;
+}
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+.registerpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - 5.6rem);
+  justify-content: center;
+}
+
+.registerpage__fields {
+  margin-bottom: 2rem;
+}
+.registerpage__register {
+  margin-top: 1rem;
+  font-size: 2rem;
+  color: var(--primary);
+  text-decoration: underline;
+  font-style: italic;
+}
+.btn--gray {
+  background-color: gray;
+  color: var(--light-text);
+  cursor: not-allowed;
+}

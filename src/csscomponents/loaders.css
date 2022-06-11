@@ -1,0 +1,61 @@
+:root {
+  font-size: 62.5%;
+  font-family: sans-serif;
+  --primary: #0d6efd;
+  --secondary: #6ea8fe;
+  --tertiary: #084298;
+  --success: #52c41a;
+  --danger: #ff4d4f;
+  --warning: #faad14;
+  --info: #1890ff;
+  --light-text: white;
+}
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+.myloader {
+  width: 4rem;
+  height: 4rem;
+  border: 0.5rem solid var(--primary);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.myloader-sm--primary {
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 0.3rem solid var(--primary);
+  border-bottom-color: white;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.myloader-sm--light {
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 0.3rem solid var(--light-text);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
