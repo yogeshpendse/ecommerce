@@ -15,6 +15,10 @@ export function Cartpage() {
   const [loader, setLoader] = useState(false);
   const { cartdispatch, cartstate } = useCartcontext();
   const { token } = useAuth();
+  const cartsum = [...cartstate.dataincart].reduce(
+    (acc, obj) => acc + obj.price * obj.quantity,
+    0
+  );
   const url = `${baseurl}/cart/getcartdata`;
   useEffect(() => {
     setLoader(true);
@@ -114,6 +118,7 @@ export function Cartpage() {
       });
     }
   }
+  console.log({ cartsum });
   return (
     <>
       <div className="page-width">
@@ -126,11 +131,22 @@ export function Cartpage() {
         ) : (
           <>
             {[...cartstate.dataincart].length === 0 && (
-              <center>
+              <center className="no-products">
                 <h1>No products in Cart.</h1>
               </center>
             )}
             <>
+              {cartsum > 0 && (
+                <center className="carttotal-container">
+                  <h1>
+                    Total:&nbsp;
+                    <span className="carttotal">
+                      &#8377;
+                      {cartsum}
+                    </span>
+                  </h1>
+                </center>
+              )}
               <div className="grid grid__col--3 cart-container">
                 {[...cartstate.dataincart].map((item) => (
                   <div className="ecard" key={item._id}>
@@ -155,7 +171,12 @@ export function Cartpage() {
                     </div>
                     <div className="ecard__counter">
                       <button
-                        className="ecard__counterdown"
+                        className={
+                          item.quantity < 1
+                            ? "ecard__counterdown ecard__counterdown--disabled"
+                            : "ecard__counterdown"
+                        }
+                        disabled={item.quantity < 1 ? true : false}
                         onClick={() => decrementincart({ item, token })}
                       >
                         <i className="bi bi-dash-circle" />

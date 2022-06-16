@@ -149,7 +149,7 @@ export function Wishlistpage() {
           <>
             {[...wishliststate.datainwishlist].length === 0 && (
               <center>
-                <h1>Whishlist empty.</h1>
+                <h1 className="no-products">Whishlist empty.</h1>
               </center>
             )}
             <div className="wishlist-container">
