@@ -28,6 +28,7 @@ export function Registerpage() {
       : false;
 
   async function checkregistertration(params) {
+    console.log(params);
     try {
       const { usernameval, passwordval, mobile, nameval } = params;
       setLoader(true);
@@ -135,7 +136,7 @@ export function Registerpage() {
           Register {loader && <span className="myloader-sm--light" />}
         </button>
         <div className="registerpage__register">
-          <Link to="/account">Don't have an account.</Link>
+          <Link to="/account">Have an account?</Link>
         </div>
       </div>
     </>

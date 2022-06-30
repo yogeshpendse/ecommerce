@@ -11,8 +11,8 @@ export function Accountpage() {
   const { isuserloggedin, setIsuserloggedin, setToken } = useAuth();
   const navigate = useNavigate();
   const { state } = useLocation();
-  const [usernameval, setUsernameval] = useState("userd");
-  const [passwordval, setPasswordval] = useState("User@1234");
+  const [usernameval, setUsernameval] = useState("testuser");
+  const [passwordval, setPasswordval] = useState("Test@123");
   const [loader, setLoader] = useState(false);
   const passwordbool = passwordval.length > 0 ? false : true;
   const usernamebool = usernameval.length > 0 ? false : true;
