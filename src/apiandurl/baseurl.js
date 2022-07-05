@@ -1,1 +1,1 @@
-export const baseurl = "https://ecom-server--bleedblue.repl.co";
+export const baseurl = "https://pizzaecom.herokuapp.com";
